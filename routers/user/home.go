@@ -331,7 +331,7 @@ func Issues(ctx *context.Context) {
 		return
 	}
 
-	var commitStatus = make(map[int64]*models.CommitStatus, len(issues))
+	var commitStatus = make(map[int64]models.CommitStatusList, len(issues))
 	for _, issue := range issues {
 		issue.Repo = showReposMap[issue.RepoID]
 

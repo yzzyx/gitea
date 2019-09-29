@@ -212,7 +212,7 @@ func issues(ctx *context.Context, milestoneID int64, isPullOption util.OptionalB
 		}
 	}
 
-	var commitStatus = make(map[int64]*models.CommitStatus, len(issues))
+	var commitStatus = make(map[int64]models.CommitStatusList, len(issues))
 
 	// Get posters.
 	for i := range issues {

@@ -52,6 +52,24 @@ const (
 	CommitStatusWarning CommitStatusState = "warning"
 )
 
+type CommitStatusList []*CommitStatus
+
+func (statusList CommitStatusList) List() []*CommitStatus {
+	return []*CommitStatus(statusList)
+}
+
+func (statusList CommitStatusList) CalcState() CommitStatusState {
+	var state CommitStatusState
+
+	statuses := []*CommitStatus(statusList)
+	for _, status := range statuses {
+		if status.State.IsWorseThan(state) {
+			state = status.State
+		}
+	}
+	return state
+}
+
 // CommitStatus holds a single Status of a single Commit
 type CommitStatus struct {
 	ID          int64             `xorm:"pk autoincr"`

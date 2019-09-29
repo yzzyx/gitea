@@ -339,7 +339,7 @@ func (pr *PullRequest) CanAutoMerge() bool {
 }
 
 // GetLastCommitStatus returns the last commit status for this pull request.
-func (pr *PullRequest) GetLastCommitStatus() (status *CommitStatus, err error) {
+func (pr *PullRequest) GetLastCommitStatus() (status CommitStatusList, err error) {
 	if err = pr.GetHeadRepo(); err != nil {
 		return nil, err
 	}
@@ -364,7 +364,7 @@ func (pr *PullRequest) GetLastCommitStatus() (status *CommitStatus, err error) {
 	if err != nil {
 		return nil, err
 	}
-	return CalcCommitStatus(statusList), nil
+	return CommitStatusList(statusList), nil
 }
 
 // MergeStyle represents the approach to merge commits into base branch.

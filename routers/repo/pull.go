@@ -353,7 +353,7 @@ func PrepareViewPullInfo(ctx *context.Context, issue *models.Issue) *git.Compare
 				return nil
 			}
 			if len(commitStatuses) > 0 {
-				ctx.Data["LatestCommitStatuses"] = commitStatuses
+				ctx.Data["LatestCommitStatuses"] = models.CommitStatusList(commitStatuses)
 				ctx.Data["LatestCommitStatus"] = models.CalcCommitStatus(commitStatuses)
 			}
 
