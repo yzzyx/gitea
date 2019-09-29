@@ -213,7 +213,7 @@
 
                     {{if .IsPull }}
                         {{if (index $.CommitStatus .ID)}}
-                            {{template "repo/commit_status" (index $.CommitStatus .ID)}}
+                            {{template "repo/commit_status_list" (index $.CommitStatus .ID)}}
 						{{end}}
 					{{end}}
 

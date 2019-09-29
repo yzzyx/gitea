@@ -27,7 +27,7 @@
 							</div>
 						{{end}}
 				</a>
-				{{template "repo/commit_status" .LatestCommitStatus}}
+				{{template "repo/commit_status_list" .LatestCommitStatuses}}
 				{{ $commitLink:= printf "%s/commit/%s" .RepoLink .LatestCommit.ID }}
 				<span class="grey has-emoji commit-summary" title="{{.LatestCommit.Summary}}">{{RenderCommitMessageLinkSubject .LatestCommit.Message $.RepoLink $commitLink $.Repository.ComposeMetas}}
 				{{if IsMultilineCommitMessage .LatestCommit.Message}}
